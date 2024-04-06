@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+    aws:
+        build:
+            dockerfile: ./Dockerfile
+        ports:
+            - "80:80"
+        container_name: "AWS_CONTAINER"
+        networks:
+            - NETWORK
+        restart: unless-stopped
+networks:
+    NETWORK:
+        name: NETWORK
+        external: true
