@@ -3,13 +3,20 @@ services:
     aws:
         build:
             dockerfile: ./Dockerfile
+        container_name: "AWS_CONTAINER"
         ports:
             - "80:80"
-        container_name: "AWS_CONTAINER"
+            - "443:443"
         networks:
             - NETWORK
-        restart: unless-stopped
+        volumes:
+            - nginx-letsencrypt:/etc/letsencrypt
 networks:
     NETWORK:
         name: NETWORK
         external: true
+volumes:
+    nginx-letsencrypt:
+        name: nginx-letsencrypt
+        labels:
+            - dont-delete
