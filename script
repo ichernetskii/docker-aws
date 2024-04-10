@@ -31,3 +31,13 @@ sudo mkdir www
 cd www
 sudo git clone https://github.com/ichernetskii/eranketa.ru.git
 sudo git clone https://github.com/ichernetskii/docker-aws.git
+# set owner to folder and all subfolders
+sudo chown -R ubuntu:ubuntu /var/www/eranketa.ru
+sudo chown -R ubuntu:ubuntu /var/www/docker-aws
+# set rights to folder and all subfolders
+chmod -R 755 /var/www/eranketa.ru/
+chmod -R 755 /var/www/docker-aws/
+cd /var/www/eranketa.ru
+sudo make unzip
+sudo make start-production
+
